@@ -1,0 +1,270 @@
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+
+  font-family: Google Sans, Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+:root {
+  --primaryClr: #9400b8;
+  --secondary: #eff5ff;
+  --radius: 5px;
+}
+body {
+  font-weight: 500;
+  font-size: 20px;
+  min-height: 100vh;
+  letter-spacing: 0.5px;
+  position: relative;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #000000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 800'%3E%3Cg %3E%3Ccircle fill='%23000000' cx='400' cy='400' r='600'/%3E%3Ccircle fill='%23230046' cx='400' cy='400' r='500'/%3E%3Ccircle fill='%232f0052' cx='400' cy='400' r='400'/%3E%3Ccircle fill='%233b075e' cx='400' cy='400' r='300'/%3E%3Ccircle fill='%2348156a' cx='400' cy='400' r='200'/%3E%3Ccircle fill='%23552277' cx='400' cy='400' r='100'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+  /* background: url(/images/dragon-scales.svg) no-repeat center
+    center/cover; */
+}
+
+body.bg {
+  background: white;
+}
+
+/* Customize the scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Customize the track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Customize the thumb */
+::-webkit-scrollbar-thumb {
+  background: var(--primaryClr);
+  border-radius: 10px;
+}
+
+/* Customize the thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.container {
+  width: 80%;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  h3 {
+    color: white;
+  }
+  gap: 15px;
+  .wrapper1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  img {
+    width: 200px;
+    border-radius: 50%;
+  }
+
+  .inputs {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+    gap: 10px;
+    input {
+      width: 100px;
+      height: 50px;
+      text-align: center;
+      border-radius: var(--radius);
+      border: 1px solid lightgray;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+    }
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  button {
+    width: 100%;
+    padding: 15px;
+    font-size: clamp(1rem, 2.5vw, 1.7rem);
+    background-color: var(--primaryClr);
+    border: none;
+    color: var(--secondary);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: 0.2s;
+  }
+}
+
+input::placeholder {
+  margin-left: -10px;
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: 130px;
+  padding-top: 60vh;
+  padding-bottom: 20vh;
+  width: 90%;
+  max-width: 600px;
+  text-align: start;
+}
+.graphic {
+  width: 100%;
+  height: 50vh;
+  display: grid;
+  place-items: center;
+  position: fixed;
+  background-color: white;
+  /* border-bottom: 5px solid red; */
+  iframe {
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+  }
+  /* display: none; */
+}
+
+.graphic::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  z-index: -11;
+  width: 100%;
+  height: 0px; /* Adjust to match the desired border thickness */
+  box-shadow: 0 15px 20px 20px #ffffff;
+}
+
+.text {
+  transition: color 0.3s ease;
+  /* Other styling as needed */
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+
+  color: rgb(204, 204, 204); /* Fade text color */
+}
+
+.text.dark {
+  color: black; /* Change text color to black */
+}
+
+.image {
+  border: 3px solid var(--primaryClr);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-size: clamp(1rem, 2.5vw, 2.5rem);
+
+  border-radius: 5px;
+  gap: 10px;
+  [data-day] {
+    padding: 8px 15px;
+    background-color: var(--primaryClr);
+    color: var(--secondary);
+  }
+  display: none;
+}
+
+.image.active {
+  display: block;
+}
+
+.suncontainer {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+}
+.ranjan {
+  img {
+    width: 100%; /* Ensures the image never exceeds the width of its container */
+    height: 300px; /* Keeps the aspect ratio intact */
+  }
+}
+.suntravel {
+  position: relative;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  #sunmid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px; /* Adjust to your desired size */
+    height: 60px; /* Adjust to your desired size */
+    transform: translate(-50%, -50%);
+  }
+
+  #earthmid {
+    position: absolute;
+    left: 50%;
+    width: 30px; /* Adjust to your desired size */
+    height: 30px; /* Adjust to your desired size */
+    transform: translateX(-50%);
+    transform-origin: 50% 100px; /* The distance from the center of the sun */
+    animation: orbit 25s linear infinite;
+  }
+}
+.suntravel::before {
+  content: "";
+  width: 170px;
+  height: 170px;
+  border: 2px dashed white;
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@keyframes orbit {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+@media (width<=490px) {
+  .container {
+    .inputs {
+      input {
+        width: 80px;
+      }
+    }
+  }
+}
