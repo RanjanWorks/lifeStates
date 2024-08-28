@@ -63,7 +63,7 @@ header {
 
 .container {
   width: 80%;
-  max-width: 400px;
+  max-width: 350px;
   padding: 30px;
   display: flex;
   align-items: center;
