@@ -166,8 +166,10 @@ button:disabled {
 
 .text {
   transition: color 0.3s ease;
+  /* Other styling as needed */
   font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-  color: #dadada;
+
+  color: rgb(204, 204, 204); /* Fade text color */
 }
 
 .text.dark {
