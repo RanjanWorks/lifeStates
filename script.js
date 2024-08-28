@@ -6,6 +6,7 @@ let box = document.getElementById("box");
 let states = document.getElementById("states");
 
 let dataDay = document.querySelector("[data-day]");
+let dataMn = document.querySelector("[data-mn]");
 let dataDate = document.querySelector("[data-date]");
 let dataYear = document.querySelector("[data-year]");
 let dataHeartBeat = document.querySelector("[data-heart-beat]");
@@ -46,22 +47,22 @@ document.querySelectorAll("input").forEach((elem) => {
 });
 
 function isElementInViewport(el) {
-  const rect = el.getBoundingClientRect();
-  const viewportHeight = window.innerHeight;
-  const elementMidPoint = rect.top + rect.height / 2;
+  let rect = el.getBoundingClientRect();
+  let viewportHeight = window.innerHeight;
+  let elementMidPoint = rect.top + rect.height / 2;
 
   // Calculate the position 50vh from the bottom
-  const targetPosition = viewportHeight * 0.6;
+  let targetPosition = viewportHeight * 0.6;
 
   return elementMidPoint >= targetPosition;
 }
 function applyDarkClass() {
-  const paragraphs = document.querySelectorAll(".lines .text");
+  let paragraphs = document.querySelectorAll(".lines .text");
   let activeFound = false;
 
   paragraphs.forEach((paragraph) => {
-    const imageId = paragraph.getAttribute("data-image");
-    const image = document.getElementById(imageId);
+    let imageId = paragraph.getAttribute("data-image");
+    let image = document.getElementById(imageId);
 
     if (!activeFound && isElementInViewport(paragraph)) {
       paragraph.classList.add("dark");
@@ -77,9 +78,9 @@ function applyDarkClass() {
 window.addEventListener("scroll", applyDarkClass);
 
 function parseDate(dateString) {
-  const [day, month, year] = dateString.split("/");
-  const dateObject = new Date(`${year}-${month}-${day}`);
-  const daysOfWeek = [
+  let [day, month, year] = dateString.split("/");
+  let dateObject = new Date(`${year}-${month}-${day}`);
+  let daysOfWeek = [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -88,8 +89,8 @@ function parseDate(dateString) {
     "Friday",
     "Saturday",
   ];
-  const dayName = daysOfWeek[dateObject.getDay()];
-  const monthsOfYear = [
+  let dayName = daysOfWeek[dateObject.getDay()];
+  let monthsOfYear = [
     "January",
     "February",
     "March",
@@ -103,7 +104,7 @@ function parseDate(dateString) {
     "November",
     "December",
   ];
-  const monthName = monthsOfYear[dateObject.getMonth()];
+  let monthName = monthsOfYear[dateObject.getMonth()];
   return {
     day: dayName,
     date: parseInt(day),
@@ -113,21 +114,21 @@ function parseDate(dateString) {
 }
 
 function calculateTimeDifference(dateString) {
-  const [day, month, year] = dateString.split("/");
-  const providedDate = new Date(`${year}-${month}-${day}`);
-  const currentDate = new Date();
-  const diffInMs = currentDate - providedDate;
-  const diffInSeconds = Math.floor(diffInMs / 1000);
-  const diffInMinutes = Math.floor(diffInSeconds / 60);
-  const diffInHours = Math.floor(diffInMinutes / 60);
-  const diffInDays = Math.floor(diffInHours / 24);
-  const years = currentDate.getFullYear() - providedDate.getFullYear();
+  let [day, month, year] = dateString.split("/");
+  let providedDate = new Date(`${year}-${month}-${day}`);
+  let currentDate = new Date();
+  let diffInMs = currentDate - providedDate;
+  let diffInSeconds = Math.floor(diffInMs / 1000);
+  let diffInMinutes = Math.floor(diffInSeconds / 60);
+  let diffInHours = Math.floor(diffInMinutes / 60);
+  let diffInDays = Math.floor(diffInHours / 24);
+  let years = currentDate.getFullYear() - providedDate.getFullYear();
   let months = currentDate.getMonth() - providedDate.getMonth();
   if (months < 0) {
     months += 12;
     years -= 1;
   }
-  const totalTime = {
+  let totalTime = {
     years: years,
     months: years * 12 + months,
     days: diffInDays,
@@ -173,39 +174,44 @@ function init() {
   }, 4000);
 
   dataSleep.innerHTML = formattedNumberIn(Math.round(times.days / 3));
+  dataDay.innerHTML = parseDate(dateF).day
+  dataDate.innerHTML = parseDate(dateF).date
+  dataMn.innerHTML = parseDate(dateF).month
+  dataYear.innerHTML = yearInput.value
 }
 
 function go() {
+  init();
   states.style.display = "flex";
   box.style.display = "none";
-  init();
+  document.body.style.background = "white"
 }
 
 //Helper Functions
 
 function formattedNumberIn(number) {
-  const formatter = new Intl.NumberFormat();
-  const formattedNumber = formatter.format(number);
+  let formatter = new Intl.NumberFormat();
+  let formattedNumber = formatter.format(number);
   return formattedNumber;
 }
 function daysUntilNextBirthday(dobString) {
-  const [day, month, year] = dobString.split("/").map(Number);
-  const today = new Date();
-  const currentYear = today.getFullYear();
+  let [day, month, year] = dobString.split("/").map(Number);
+  let today = new Date();
+  let currentYear = today.getFullYear();
   let nextBirthday = new Date(currentYear, month - 1, day);
   if (today > nextBirthday) {
     nextBirthday.setFullYear(currentYear + 1);
   }
 
-  const diffTime = nextBirthday - today;
+  let diffTime = nextBirthday - today;
 
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   return diffDays;
 }
 
 async function fetchData(url) {
   try {
-    const response = await fetch(url);
+    let response = await fetch(url);
     return response.ok ? await response.json() : null;
   } catch (error) {
     console.error("Fetch error:", error);
@@ -217,5 +223,7 @@ async function fetchData(url) {
 
 fetchData("https://api.adviceslip.com/advice").then((data) => {
   dataAdvice.innerHTML = data.slip.advice;
-  console.log(data.slip.advice);
 });
+
+
+document.querySelector('form').addEventListener('submit',(e)=>e.preventDefault())
