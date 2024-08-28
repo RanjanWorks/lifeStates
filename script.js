@@ -25,8 +25,7 @@ let dataSunTravel = document.querySelector("[data-sunTravel]");
 let dataMoonOrbit = document.querySelector("[data-moonOrbit]");
 let dataMoonAway = document.querySelector("[data-moonaway]");
 let dataNxtBday = document.querySelector("[data-bday]");
-
-const tick = new Audio("tick.wav");
+let dataAdvice = document.querySelector("[data-advice]");
 
 document.querySelectorAll("input").forEach((elem) => {
   elem.addEventListener("keyup", () => {
@@ -76,7 +75,6 @@ function applyDarkClass() {
   });
 }
 window.addEventListener("scroll", applyDarkClass);
-// applyDarkClass();
 
 function parseDate(dateString) {
   const [day, month, year] = dateString.split("/");
@@ -146,7 +144,6 @@ function init() {
   let i = 0;
   let b = 0;
   let sunT = 0;
-  tick.play();
   setInterval(() => {
     i++;
     dataHeartBeat.innerHTML = formattedNumberIn(times.minutes * 78 + i);
@@ -181,12 +178,10 @@ function init() {
 function go() {
   states.style.display = "flex";
   box.style.display = "none";
-  document.body.classList.add("bg");
   init();
 }
-// go();
 
-//healper
+//Helper Functions
 
 function formattedNumberIn(number) {
   const formatter = new Intl.NumberFormat();
@@ -207,3 +202,20 @@ function daysUntilNextBirthday(dobString) {
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   return diffDays;
 }
+
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    return response.ok ? await response.json() : null;
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return null;
+  }
+}
+
+// Example usage:
+
+fetchData("https://api.adviceslip.com/advice").then((data) => {
+  dataAdvice.innerHTML = data.slip.advice;
+  console.log(data.slip.advice);
+});

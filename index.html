@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>DOB</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <title>LifeStates By Ranjan</title>
     <link
       rel="stylesheet"
       href="//fonts.googleapis.com/css?family=Google+Sans+Text:400,500,700,400i,500i,700i|Google+Sans:400,500|Google+Sans+Display:400,500|Product+Sans:400"
@@ -13,16 +16,17 @@
   </head>
 
   <body>
+    
     <div  id="box" class="container">
       <div class="wrapper1">
         <div class="avtar">
           <img src="./images/image.png" alt="avtar" />
         </div>
-        <h3>Birth Date</h3>
+        <h2>Birth Date</h2>
         <div class="inputs">
-          <input id="dayinput" type="number" placeholder="Day" />
-          <input id="monthinput" type="number" placeholder="Month"  />
-          <input id="yearinput" type="number" placeholder="Year"/>
+          <input id="dayinput" type="number" placeholder="Day" required />
+          <input id="monthinput" type="number" placeholder="Month" required  />
+          <input id="yearinput" type="number" placeholder="Year" required/>
         </div>
         <button onclick="go()" disabled id="submitBtn">
           GO <span id="go">>>></span>
@@ -93,8 +97,8 @@
        <iframe id="img15" class="image" src="https://lottie.host/embed/319992a3-f568-4ae6-92a5-c6f1dd0961b5/vaEc80e5aZ.json"></iframe>
 
        <iframe id="img16" class="image" src="https://lottie.host/embed/87ed780b-ef5c-47e0-8417-7039be79bc16/yXVHVvQuPJ.json"></iframe>
-
-<div style="border: none;" id="img17" class="image ranjan">
+       <iframe id="img17" class="image" src="https://lottie.host/embed/847588ac-846f-4019-b5d1-5514ecbdbc33/og8dJVyn1U.json"></iframe>
+<div style="border: none;" id="img18" class="image ranjan">
   <img src="/images/ranjan.jpg" alt="">
 </div>
    
@@ -135,7 +139,8 @@
         <p data-image="img15" class="text">The moon is slowly moving away. It's <span data-moonaway></span> cm further away than when you were born. </p>
 
         <p data-image="img16" class="text"> <span data-bday></span> days left until you blow out the candles again!</p>
-        <p data-image="img17" class="text"> Made With Love!</p>
+        <p data-image="img17" class="text">Advice For You : <span data-advice></span></p>
+        <p data-image="img18" class="text"> Made With❤️ <br> Ranjan</p>
      
       </div>
     </div>
