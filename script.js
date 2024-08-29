@@ -26,7 +26,6 @@ let dataSunTravel = document.querySelector("[data-sunTravel]");
 let dataMoonOrbit = document.querySelector("[data-moonOrbit]");
 let dataMoonAway = document.querySelector("[data-moonaway]");
 let dataNxtBday = document.querySelector("[data-bday]");
-let dataAdvice = document.querySelector("[data-advice]");
 
 document.querySelectorAll("input").forEach((elem) => {
   elem.addEventListener("keyup", () => {
@@ -185,8 +184,16 @@ function go() {
   states.style.display = "flex";
   box.style.display = "none";
   document.body.style.background = "white";
+  document.querySelector('.border').style.display = "none"
 }
-
+function restart(){
+  states.style.display = "none";
+  box.style.display = "flex";
+  document.querySelector('.border').style.display = "block"
+  document.querySelectorAll('input').forEach(e=>{
+    e.value = null
+  })
+}
 //Helper Functions
 
 function formattedNumberIn(number) {
@@ -209,21 +216,9 @@ function daysUntilNextBirthday(dobString) {
   return diffDays;
 }
 
-async function fetchData(url) {
-  try {
-    let response = await fetch(url);
-    return response.ok ? await response.json() : null;
-  } catch (error) {
-    console.error("Fetch error:", error);
-    return null;
-  }
-}
 
-// Example usage:
 
-fetchData("https://api.adviceslip.com/advice").then((data) => {
-  dataAdvice.innerHTML = data.slip.advice;
-});
+
 
 document
   .querySelector("form")

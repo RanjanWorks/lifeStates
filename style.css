@@ -90,7 +90,7 @@ header {
   p {
     padding: 10px 20px;
     font-family: "Playwrite AR", cursive;
-    font-size: clamp(1rem, 2.5vw, 1.8rem) !important;
+    font-size: clamp(1rem, 2.5vw, 1.3rem) !important;
   }
 }
 .border {
@@ -225,6 +225,7 @@ button:disabled {
   border: 3px solid var(--primaryClr);
   text-align: center;
   display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
@@ -320,4 +321,11 @@ button:disabled {
     right: 0;
     left: unset;
   }
+}
+
+
+@media(width<=490px){
+.border{
+  display: none;
+}
 }
