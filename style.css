@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playwrite+AR:wght@100..400&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap");
 
 * {
   padding: 0;
@@ -88,12 +88,21 @@ header {
   left: 0;
   width: 100%;
   p {
-    padding: 10px;
+    padding: 10px 20px;
     font-family: "Playwrite AR", cursive;
     font-size: clamp(1rem, 2.5vw, 1.8rem) !important;
   }
 }
-
+.border {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  border: 2px solid transparent;
+  border-image: url(images/border.svg);
+  border-image-slice: 20%;
+  border-image-repeat: round;
+  border-image-width: 50px;
+}
 .container {
   width: 80%;
   max-width: 350px;
