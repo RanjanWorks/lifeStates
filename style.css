@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+AR:wght@100..400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+
 * {
   padding: 0;
   margin: 0;
@@ -28,7 +30,6 @@ body {
   justify-content: center;
   position: relative;
   overflow-x: hidden;
-  background-color: #ffffff;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='30' viewBox='0 0 1000 120'%3E%3Cg fill='none' stroke='%23FFE3E3' stroke-width='0.9' %3E%3Cpath d='M-500 75c0 0 125-30 250-30S0 75 0 75s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 45c0 0 125-30 250-30S0 45 0 45s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 105c0 0 125-30 250-30S0 105 0 105s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 15c0 0 125-30 250-30S0 15 0 15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500-15c0 0 125-30 250-30S0-15 0-15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 135c0 0 125-30 250-30S0 135 0 135s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3C/g%3E%3C/svg%3E");
 }
 
@@ -48,7 +49,39 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+.loaderContainer {
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  .loader {
+    display: block;
+    --height-of-loader: 4px;
+    width: 130px;
+    height: var(--height-of-loader);
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
 
+  .loader::before {
+    content: "";
+    position: absolute;
+    background: var(--primaryClr);
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    border-radius: 30px;
+    animation: moving 1s ease-in-out infinite;
+  }
+}
 header {
   position: absolute;
   top: 0;
@@ -56,8 +89,8 @@ header {
   width: 100%;
   p {
     padding: 10px;
-    font-family: "Cedarville Cursive", cursive;
-    font-size: clamp(2rem, 2.5vw, 3rem);
+    font-family: "Playwrite AR", cursive;
+    font-size: clamp(1rem, 2.5vw, 1.8rem) !important;
   }
 }
 
@@ -166,7 +199,7 @@ button:disabled {
 
 .text {
   transition: color 0.3s ease;
-  /* Other styling as needed */
+  font-family: "Hind", sans-serif;
   font-size: clamp(1.2rem, 2.5vw, 1.8rem);
 
   color: rgb(204, 204, 204); /* Fade text color */
@@ -265,5 +298,14 @@ button:disabled {
   }
 }
 
-@media (width<=490px) {
+@keyframes moving {
+  50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
 }

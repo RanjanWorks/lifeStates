@@ -145,13 +145,13 @@ function init() {
   let i = 0;
   let b = 0;
   let sunT = 0;
+  dataTotalDays.innerHTML = formattedNumberIn(times.days);
+  dataY.innerHTML = formattedNumberIn(times.years);
+  dataM.innerHTML = formattedNumberIn(times.months);
   setInterval(() => {
     i++;
     dataHeartBeat.innerHTML = formattedNumberIn(times.minutes * 78 + i);
     dataBloodPump.innerHTML = formattedNumberIn(times.minutes * 6);
-    dataTotalDays.innerHTML = formattedNumberIn(times.days);
-    dataY.innerHTML = formattedNumberIn(times.years);
-    dataM.innerHTML = formattedNumberIn(times.months);
     dataTravel.innerHTML = formattedNumberIn(times.days * 1200);
     dataSaliva.innerHTML = formattedNumberIn(times.days * 1);
     dataSkin.innerHTML = formattedNumberIn(Math.round(times.years * 4));
@@ -174,17 +174,17 @@ function init() {
   }, 4000);
 
   dataSleep.innerHTML = formattedNumberIn(Math.round(times.days / 3));
-  dataDay.innerHTML = parseDate(dateF).day
-  dataDate.innerHTML = parseDate(dateF).date
-  dataMn.innerHTML = parseDate(dateF).month
-  dataYear.innerHTML = yearInput.value
+  dataDay.innerHTML = parseDate(dateF).day;
+  dataDate.innerHTML = parseDate(dateF).date;
+  dataMn.innerHTML = parseDate(dateF).month;
+  dataYear.innerHTML = yearInput.value;
 }
 
 function go() {
   init();
   states.style.display = "flex";
   box.style.display = "none";
-  document.body.style.background = "white"
+  document.body.style.background = "white";
 }
 
 //Helper Functions
@@ -225,5 +225,11 @@ fetchData("https://api.adviceslip.com/advice").then((data) => {
   dataAdvice.innerHTML = data.slip.advice;
 });
 
+document
+  .querySelector("form")
+  .addEventListener("submit", (e) => e.preventDefault());
 
-document.querySelector('form').addEventListener('submit',(e)=>e.preventDefault())
+
+  function stopLoading(){
+    document.querySelector('.loaderContainer').style.display = "none"
+  }
